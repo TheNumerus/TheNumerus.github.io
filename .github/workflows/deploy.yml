@@ -13,8 +13,8 @@ jobs:
         with:
           node-version: 12
       - name: tsc
-        uses: icrawl/action-tsc@v1
         working-directory: ./dispersion
+        uses: icrawl/action-tsc@v1
       - name: Archive artifact
         shell: sh
         run: |
