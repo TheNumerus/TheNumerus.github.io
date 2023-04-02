@@ -1,0 +1,36 @@
+name: Build + Deploy
+on: [push]
+jobs:
+    build:
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                submodules: true
+            - name: Archive artifact
+              shell: sh
+              run: |tar \
+                    --directory . \
+                    -cvf "$RUNNER_TEMP/artifact.tar" \
+                    --exclude=.git \
+                    --exclude=.github \
+                   .
+            - name: Upload artifact
+              uses: actions/upload-artifact@v3
+              with:
+                name: ${{ inputs.name }}
+                path: ${{ runner.temp }}/artifact.tar
+                retention-days: ${{ inputs.retention-days }}
+                if-no-files-found: error
+    Deploy:
+        needs: build
+        permissions:
+            pages: write      # to deploy to Pages
+            id-token: write
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v1
