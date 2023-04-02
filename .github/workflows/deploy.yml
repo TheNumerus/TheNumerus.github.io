@@ -26,7 +26,7 @@ jobs:
             --directory . \
             -cvf "$RUNNER_TEMP/artifact.tar" \
             --exclude=.git \
-            --exclude./dispersion/node_modules \
+            --exclude=./dispersion/node_modules \
             --exclude=.github \
              .
       - name: Upload artifact
