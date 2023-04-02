@@ -16,7 +16,8 @@ jobs:
         run: npm install
       - name: tsc
         working-directory: ./dispersion
-        shell: tsc
+        shell: sh
+        run: tsc
       - name: Archive artifact
         shell: sh
         run: |
