@@ -11,11 +11,12 @@ jobs:
       - name: install node v12
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 18
+      - name: npm install
+        run: npm install
       - name: tsc
-        uses: icrawl/action-tsc@v1
-        with:
-          working-directory: ./dispersion
+        working-directory: ./dispersion
+        shell: tsc
       - name: Archive artifact
         shell: sh
         run: |
