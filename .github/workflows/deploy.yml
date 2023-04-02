@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: 18
       - name: npm install
+        working-directory: ./dispersion
         run: npm install
       - name: tsc
         working-directory: ./dispersion
