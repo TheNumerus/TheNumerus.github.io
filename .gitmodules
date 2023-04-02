@@ -1,0 +1,3 @@
+[submodule "dispersion"]
+    path=dispersion
+    url=git://github.com/TheNumerus/mit-fyo-dispersion
