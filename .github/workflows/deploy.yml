@@ -8,12 +8,13 @@ jobs:
                 submodules: true
             - name: Archive artifact
               shell: sh
-              run: |tar \
-                    --directory . \
-                    -cvf "$RUNNER_TEMP/artifact.tar" \
-                    --exclude=.git \
-                    --exclude=.github \
-                   .
+              run: |
+            tar \
+                --directory . \
+                -cvf "$RUNNER_TEMP/artifact.tar" \
+                --exclude=.git \
+                --exclude=.github \
+            .
             - name: Upload artifact
               uses: actions/upload-artifact@v3
               with:
