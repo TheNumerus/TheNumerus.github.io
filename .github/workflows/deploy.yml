@@ -26,12 +26,13 @@ jobs:
             --directory . \
             -cvf "$RUNNER_TEMP/artifact.tar" \
             --exclude=.git \
+            --exclude./dispersion/node_modules \
             --exclude=.github \
              .
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ inputs.name }}
+          name: github-pages
           path: ${{ runner.temp }}/artifact.tar
           retention-days: ${{ inputs.retention-days }}
           if-no-files-found: error
